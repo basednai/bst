@@ -19,6 +19,6 @@ export function tree(treeArray) {
     height: (node) => operations.height(node),
     depth: (node) => operations.depth(node, root),
     isBalanced: () => operations.isBalanced(root),
-    reBalance: () => root = operations.reBalance(root),
+      reBalance: () => root = operations.reBalance(root),
   };
 }

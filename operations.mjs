@@ -32,6 +32,14 @@ export function deleteItem(data, current) {
 
       current.data = successor.data;
       successor.data = null;
+    } else if (current.left) {
+      current.data = current.left.data;
+      current.left = null;
+    } else if (current.right) {
+      current.data = current.right.data;
+      current.right = null;
+    } else {
+      current.data = null;
     }
   } else {
     if (current.data > data) deleteItem(data, current.left);
@@ -77,11 +85,9 @@ export function inOrder(current, callback) {
   } else if (!current.left) {
     callback(current);
     inOrder(current.right, callback);
-
-} else if (!current.right) {
+  } else if (!current.right) {
     inOrder(current.left, callback);
     callback(current);
-
   } else {
     inOrder(current.left, callback);
     callback(current);
@@ -123,15 +129,15 @@ export function preOrder(current, callback) {
 }
 
 export function height(node) {
-  let left = getHeight(node.left);
-  let right = getHeight(node.right);
+  let left = getHeight(node.left) + 1;
+  let right = getHeight(node.right) + 1;
+  console.log("left", left, "right", right);
 
-  return Math.max(left, right) + 1;
+  return Math.max(left, right);
 }
 
 function getHeight(node, index = 0) {
-  // console.log(node.data, index);
-
+  if (node) console.log(node.data, index);
   if (node == null) {
     return index;
   } else if (node.left && node.right) {

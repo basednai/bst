@@ -13,17 +13,27 @@ newTree.insert(254)
 newTree.insert(11)
 newTree.insert(250)
 newTree.insert(199)
+newTree.insert(1)
+newTree.insert(254)
+newTree.insert(249)
+newTree.insert(248)
+newTree.insert(247)
+newTree.insert(246)
 
-newTree.prettyPrint();
-console.log(newTree.isBalanced());
+
+
+
+// newTree.prettyPrint();
+// console.log(newTree.isBalanced());
 
 // newTree.inOrder((item) => process.stdout.write(` -> ${item.data}`));
 // let find = newTree.find(100)
 // console.log(found);
 
-newTree.reBalance();
+// newTree.reBalance();
 
-newTree.deleteItem(newTree.find(150)) // root not deleted in balanced tree, resolve
-
+newTree.deleteItem(254)
 newTree.prettyPrint();
-console.log(newTree.isBalanced());
+// console.log(newTree.isBalanced());
+console.log(newTree.height(newTree.find(100)));
+
