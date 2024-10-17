@@ -1,39 +1,61 @@
 import { tree } from "./tree.mjs";
-const input = [10, 20, 30, 100, 150, 200, 300];
-const newTree = tree(input);
+/* Create a binary search tree from an array of random numbers < 100. */
+const input = new Array(7).fill(0);
+input.forEach(
+  (elem, index, array) => (array[index] = Math.floor(Math.random() * 100))
+);
 
-newTree.insert(500)
-newTree.insert(5)
-newTree.insert(3)
-newTree.insert(57)
-newTree.insert(251)
-newTree.insert(252)
-newTree.insert(253)
-newTree.insert(254)
-newTree.insert(11)
-newTree.insert(250)
-newTree.insert(199)
-newTree.insert(1)
-newTree.insert(254)
-newTree.insert(249)
-newTree.insert(248)
-newTree.insert(247)
-newTree.insert(246)
+const testTree = tree(input);
 
+/* Confirm that the tree is balanced by calling isBalanced. */
+testTree.prettyPrint();
+console.log(testTree.isBalanced());
 
+/* Print out all elements in level, pre, post, and in order. */
+console.log("level");
+testTree.levelOrder(traversalCallback);
+console.log("\n");
+console.log("pre");
+testTree.preOrder(traversalCallback);
+console.log("\n");
+console.log("post");
+testTree.postOrder(traversalCallback);
+console.log("\n");
+console.log("in");
+testTree.inOrder(traversalCallback);
+console.log("\n");
 
+/* Unbalance the tree by adding several numbers > 100.
+ */ testTree.insert(Math.floor(Math.random() * 100 + 100));
+testTree.insert(Math.floor(Math.random() * 100 + 100));
+testTree.insert(Math.floor(Math.random() * 100 + 100));
+testTree.insert(Math.floor(Math.random() * 100 + 100));
 
-// newTree.prettyPrint();
-// console.log(newTree.isBalanced());
+/* Confirm that the tree is balanced by calling isBalanced. */
+testTree.prettyPrint();
+console.log(testTree.isBalanced());
 
-// newTree.inOrder((item) => process.stdout.write(` -> ${item.data}`));
-// let find = newTree.find(100)
-// console.log(found);
+/* Balance the tree by calling rebalance. */
+testTree.reBalance();
 
-// newTree.reBalance();
+/* Confirm that the tree is balanced by calling isBalanced. */
+testTree.prettyPrint();
+console.log(testTree.isBalanced());
 
-newTree.deleteItem(254)
-newTree.prettyPrint();
-// console.log(newTree.isBalanced());
-console.log(newTree.height(newTree.find(100)));
+/*Print out all elements in level, pre, post, and in order.*/
+console.log("level");
+testTree.levelOrder(traversalCallback);
+console.log("\n");
+console.log("pre");
+testTree.preOrder(traversalCallback);
+console.log("\n");
+console.log("post");
+testTree.postOrder(traversalCallback);
+console.log("\n");
+console.log("in");
+testTree.inOrder(traversalCallback);
+console.log("\n");
 
+function traversalCallback(item) {
+  process.stdout.write(` -> ${item.data}`);
+}

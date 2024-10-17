@@ -131,13 +131,12 @@ export function preOrder(current, callback) {
 export function height(node) {
   let left = getHeight(node.left) + 1;
   let right = getHeight(node.right) + 1;
-  console.log("left", left, "right", right);
 
   return Math.max(left, right);
 }
 
 function getHeight(node, index = 0) {
-  if (node) console.log(node.data, index);
+
   if (node == null) {
     return index;
   } else if (node.left && node.right) {
